@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
 from pathlib import Path
-
+import os
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -23,10 +23,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = '#(v1692^jb6lykp*$egrqlj)rto^=+lt@gp+ssh17w458zi8jw'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
-
+#ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['impermeabilizacion.com.co']
 
 # Application definition
 
@@ -76,8 +76,12 @@ WSGI_APPLICATION = 'impermeabilizaciones.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'seedch_seedcorp_db',
+        'USER': 'seedch_seedadm',
+        'PASSWORD': '27QFL2iNuv',
+        'HOST': 'seedcharlie.co',
+        'PORT': '3306',
     }
 }
 
@@ -110,9 +114,11 @@ EMAIL_PORT = 587
 # Internationalization
 # https://docs.djangoproject.com/en/3.1/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'es-spa'
 
 TIME_ZONE = 'UTC'
+
+TIME_ZONE = 'Etc/GMT-5'
 
 USE_I18N = True
 
@@ -124,4 +130,12 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
+
+STATIC_ROOT = os.path.join(BASE_DIR,'staticfiles')
 STATIC_URL = '/static/'
+
+
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'static'),   
+)
+
